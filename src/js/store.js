@@ -13,6 +13,7 @@ function getPoints() { return parseInt(localStorage.getItem('mycare_points') || 
 function deductPoints(n) {
   const current = getPoints();
   localStorage.setItem('mycare_points', Math.max(0, current - n));
+  window.dispatchEvent(new CustomEvent('mycare_points_changed'));
 }
 
 function loadHistory() { return JSON.parse(localStorage.getItem('mycare_store_history') || '[]'); }
@@ -46,6 +47,13 @@ function historyRowHTML(h) {
     <span style="font-size:13px;font-weight:500;color:var(--accent);">-${h.cost} pts</span>
   </div>`;
 }
+
+window.addEventListener('mycare_points_changed', () => {
+  const storePage = document.getElementById('page-store');
+  if (storePage && storePage.style.display !== 'none' && storePage.innerHTML.trim() !== '') {
+    renderStore();
+  }
+});
 
 export function renderStore() {
   const pts = getPoints();
