@@ -42,8 +42,14 @@ const LEVELS = {
 };
 
 function getPoints() { return parseInt(localStorage.getItem('mycare_points') || '0'); }
-function addPoints(n) { localStorage.setItem('mycare_points', getPoints() + n); }
-function deductPoints(n) { localStorage.setItem('mycare_points', Math.max(0, getPoints() - n)); }
+function addPoints(n) {
+  localStorage.setItem('mycare_points', getPoints() + n);
+  window.dispatchEvent(new CustomEvent('mycare_points_changed'));
+}
+function deductPoints(n) {
+  localStorage.setItem('mycare_points', Math.max(0, getPoints() - n));
+  window.dispatchEvent(new CustomEvent('mycare_points_changed'));
+}
 
 function cardHTML(d) {
   const lv = LEVELS[d.level];
