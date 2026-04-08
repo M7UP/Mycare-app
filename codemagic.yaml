@@ -12,7 +12,7 @@ workflows:
         script: |
           npm install
 
-      - name: Build Vite app
+      - name: Build web app
         script: |
           npm run build
 
@@ -20,10 +20,21 @@ workflows:
         script: |
           npx cap sync ios
 
+      - name: Build iOS IPA
+        script: |
+          xcodebuild \
+            -workspace ios/App/App.xcworkspace \
+            -scheme App \
+            -configuration Release \
+            -destination generic/platform=iOS \
+            -archivePath $CM_BUILD_DIR/App.xcarchive \
+            archive
+
+          xcodebuild \
+            -exportArchive \
+            -archivePath $CM_BUILD_DIR/App.xcarchive \
+            -exportOptionsPlist ios/App/exportOptions.plist \
+            -exportPath $CM_BUILD_DIR/build/ios/ipa
+
     artifacts:
       - build/ios/ipa/*.ipa
-
-    publishing:
-      email:
-        recipients:
-          - matissouph@gmail.com
