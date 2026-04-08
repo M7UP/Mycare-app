@@ -24,8 +24,8 @@ workflows:
             CODE_SIGN_IDENTITY="" \
             PROVISIONING_PROFILE=""
       
-          mkdir -p output
-          cp -r build/Build/Products/Release-iphoneos/App.app output/
-          cd output && zip -r App.ipa App.app
+          mkdir -p output/Payload
+          cp -r build/Build/Products/Release-iphoneos/App.app output/Payload/
+          cd output && zip -r App.ipa Payload
     artifacts:
       - output/App.ipa
