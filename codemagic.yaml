@@ -8,11 +8,14 @@ workflows:
         script: npm install
       - name: Build Vite app
         script: npm run build
+      - name: Verify project path
+        script: ls ios/App/
       - name: Sync Capacitor
         script: npx cap sync ios
       - name: Build unsigned IPA
         script: |
-          xcodebuild -workspace ios/App/App.xcworkspace \
+          xcodebuild \
+            -project ios/App/App.xcodeproj \
             -scheme App \
             -configuration Release \
             -sdk iphoneos \
@@ -20,7 +23,7 @@ workflows:
             CODE_SIGNING_ALLOWED=NO \
             CODE_SIGN_IDENTITY="" \
             PROVISIONING_PROFILE=""
-          # Package into IPA
+      
           mkdir -p output
           cp -r build/Build/Products/Release-iphoneos/App.app output/
           cd output && zip -r App.ipa App.app
