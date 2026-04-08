@@ -15,9 +15,9 @@ workflows:
       - name: Verify web files copied
         script: |
           echo "=== dist folder ==="
-          ls dist/ || echo "dist/ not found at root"
-          echo "=== public folder ==="
-          ls ios/App/App/public/ || echo "public/ is empty or missing"
+          ls dist/
+          echo "=== ios public folder ==="
+          ls ios/App/App/public/
       - name: Build unsigned IPA
         script: |
           xcodebuild \
