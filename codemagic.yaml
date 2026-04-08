@@ -12,6 +12,12 @@ workflows:
         script: ls ios/App/
       - name: Sync Capacitor
         script: npx cap sync ios
+      - name: Verify web files copied
+        script: |
+          echo "=== dist folder ==="
+          ls dist/ || echo "dist/ not found at root"
+          echo "=== public folder ==="
+          ls ios/App/App/public/ || echo "public/ is empty or missing"
       - name: Build unsigned IPA
         script: |
           xcodebuild \
