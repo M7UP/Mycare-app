@@ -1,0 +1,10 @@
+{
+  "appId": "com.phanet.mycare",
+  "appName": "Mycare",
+  "webDir": "dist",
+  "plugins": {
+    "SplashScreen": {
+      "launchAutoHide": false
+    }
+  }
+}

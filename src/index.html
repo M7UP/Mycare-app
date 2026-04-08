@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>MyCare</title>
+  <meta name="viewport" content="viewport-fit=cover, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+  <meta name="theme-color" content="#090e14"/>
+  <link rel="stylesheet" href="./css/style.css"/>
+</head>
+<body>
+
+  <div id="app">
+
+    <!-- PAGES -->
+    <div class="page" id="page-deadlines"></div>
+    <div class="page" id="page-budget"></div>
+    <div class="page" id="page-store"></div>
+
+    <!-- BOTTOM NAV -->
+    <nav id="bottom-nav">
+      <div class="nav-item active" data-page="deadlines">
+        <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><rect x="3" y="3" width="7" height="7" rx="2" stroke="currentColor" stroke-width="1.5"/><rect x="12" y="3" width="7" height="7" rx="2" stroke="currentColor" stroke-width="1.5"/><rect x="3" y="12" width="7" height="7" rx="2" stroke="currentColor" stroke-width="1.5"/><rect x="12" y="12" width="7" height="7" rx="2" stroke="currentColor" stroke-width="1.5"/></svg>
+        <span>Deadlines</span>
+      </div>
+      <div class="nav-item" data-page="budget">
+        <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M3 11h16M3 6h16M3 16h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        <span>Budget</span>
+      </div>
+      <div class="nav-item" data-page="store">
+        <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M4 17l2-6h10l2 6H4z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M8 11V8a3 3 0 016 0v3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        <span>Life Store</span>
+      </div>
+    </nav>
+
+    <!-- BOTTOM SHEET OVERLAY -->
+    <div id="sheet-overlay" class="hidden"></div>
+    <div id="bottom-sheet" class="hidden"></div>
+
+  </div>
+
+  <script src="./js/app.js" type="module"></script>
+</body>
+</html>
