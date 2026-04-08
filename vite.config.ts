@@ -1,10 +1,9 @@
 import { defineConfig } from 'vite';
 
 export default defineConfig({
-  root: '.',           // root is the repo root
+  root: '.',
   build: {
-    outDir: 'dist',    // ← outputs to repo-root/dist/
-  }
+    outDir: 'dist',
     minify: false,
     emptyOutDir: true,
   },
